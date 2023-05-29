@@ -1,3 +1,6 @@
 javac *.java
 java server
+
 java client
+
+# then send messages 
