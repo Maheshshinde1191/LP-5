@@ -41,44 +41,45 @@ public class Ringnew {
 
 public void performElection()
 {
-System.out.println("Process no. " + processes[getMax()].id + " fails");
-processes[getMax()].active = false;
-System.out.println("Election initiated by: ");
-int initiatorProcess = sc.nextInt();
-int prev = initiatorProcess;
-int next = prev + 1;
-while(true)
-{
-if(processes[next].active)
-{
-System.out.println("Process " + processes[prev].id
-+
-" pass Election(" + processes[prev].id
-+ ") to " + processes[next].id);
-prev = next;
-}
-next = (next + 1) % numberOfProcesses;
-if(next == initiatorProcess)
-break;
-}
-System.out.println("Process " + processes[getMax()].id + " becomes coordinator");
-int coordinator = processes[getMax()].id;
-prev = coordinator;
-next = (prev + 1) % numberOfProcesses;
-while(true)
-{
-if(processes[next].active)
-{
-System.out.println("Process " + processes[prev].id+ " pass Coordinator("+ coordinator + ") message to process "+ processes[next].id);
-prev = next;
-}
-next = (next + 1) % numberOfProcesses;
-if(next == coordinator)
-{
-System.out.println("End of Election");
-break;
-}
-}
+    System.out.println("Process no. " + processes[getMax()].id + " fails");
+    processes[getMax()].active = false;
+
+    System.out.println("Election initiated by: ");
+    int initiatorProcess = sc.nextInt();
+    int prev = initiatorProcess;
+    int next = prev + 1;
+
+    while(true) {
+        if(processes[next].active) {
+            System.out.println("Process " + processes[prev].id
+            +
+            " pass Election(" + processes[prev].id
+            + ") to " + processes[next].id);
+            prev = next;
+        }
+        next = (next + 1) % numberOfProcesses;
+
+        if(next == initiatorProcess)
+            break;
+    }
+
+    System.out.println("Process " + processes[getMax()].id + " becomes coordinator");
+    int coordinator = processes[getMax()].id;
+    prev = coordinator;
+    next = (prev + 1) % numberOfProcesses;
+    
+    while(true) {
+        if(processes[next].active) {
+            System.out.println("Process " + processes[prev].id+ " pass Coordinator("+ coordinator + ") message to process "+ processes[next].id);
+            prev = next;
+        }
+        next = (next + 1) % numberOfProcesses;
+        
+        if(next == coordinator){
+            System.out.println("End of Election");
+            break;
+        }
+    }
 }
 
     public static void main(String[] args) {

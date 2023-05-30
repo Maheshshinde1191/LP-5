@@ -1,0 +1,10 @@
+export mpj_home= D:/7 sem -engg/lp5 assignments/swalehacode/LP5-main/Problem_stmt_5/mpj-v0_44
+export path=mpj_home/bin:$path
+javac -cp D:/7 sem -engg/lp5 assignments/swalehacode/LP5-main/Problem_stmt_5/mpj-v0_44/lib/mpj.jar ScatterGather.java
+$mpj_home/bin/mpjrun.sh -np 4 ScatterGather
+
+
+cp: classpath
+np: number of processors
+ 
+ 
